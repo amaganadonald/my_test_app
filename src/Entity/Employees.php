@@ -4,10 +4,11 @@ namespace App\Entity;
 
 use App\Repository\EmployeesRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: EmployeesRepository::class)]
+#[UniqueEntity('firstname', 'lastname', 'register_number')]
 class Employees
 {
     #[ORM\Id]

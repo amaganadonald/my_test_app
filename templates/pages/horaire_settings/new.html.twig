@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    New Horaire
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+      <h2 class="mt-4">Création d'une Horaire</h2>
+      
+      {{form_start(form)}}
+      <div class="form-group">
+        {{form_label(form.name)}}
+        {{form_widget(form.name)}}
+        <div class="form-error">{{form_errors(form.name)}}</div>
+      </div>
+      <div class="form-group">
+        {{form_label(form.description)}}
+        {{form_widget(form.description)}}
+        <div class="form-error">{{form_errors(form.description)}}</div>
+      </div>
+      <div class="form-group">
+        {{form_label(form.entree)}}
+        {{form_widget(form.entree)}}
+        <div class="form-error">{{form_errors(form.entree)}}</div>
+      </div>
+      <div class="form-group">
+        {{form_label(form.ExitBreak)}}
+        {{form_widget(form.ExitBreak)}}
+        <div class="form-error">{{form_errors(form.ExitBreak)}}</div>
+      </div>
+      <div class="form-group">
+        {{form_label(form.ReturnBreak)}}
+        {{form_widget(form.ReturnBreak)}}
+        <div class="form-error">{{form_errors(form.ReturnBreak)}}</div>
+      </div>
+      <div class="form-group">
+        {{form_label(form.ExitWork)}}
+        {{form_widget(form.ExitWork)}}
+        <div class="form-error">{{form_errors(form.ExitWork)}}</div>
+      </div>
+      <div class="form-group">
+        {{form_row(form.submit)}}
+      </div>
+      {{form_end(form)}}
+    </div>
+{% endblock %}
