@@ -6,6 +6,7 @@ use App\Entity\HoraireSettings;
 use App\Form\HoraireType;
 use App\Repository\HoraireSettingsRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,9 +18,14 @@ class HoraireSettingsController extends AbstractController
      * function default findAll
      */
     #[Route('/horaire/settings', name: 'app_horaire_settings', methods: ['GET'])]
-    public function index(HoraireSettingsRepository $repository): Response
+    public function index(HoraireSettingsRepository $repository, PaginatorInterface $paginator, Request $request): Response
     {
-        $horaire = $repository->findAll();
+        $horaire = $paginator->paginate(
+            $repository->findAll(), /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            5 /*limit per page*/
+        );
+        //$horaire = $repository->findAll();
         //dd($horaire);
         return $this->render('pages/horaire_settings/index.html.twig', [
           "horaires" => $horaire
